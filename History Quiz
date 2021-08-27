@@ -1,0 +1,89 @@
+const chalk = require('chalk');
+var readlineSync = require('readline-sync');
+
+var score = 0;
+
+var highScore = [ {
+  name : "Harsh", 
+  score : "10"
+},
+
+]
+
+var userName = readlineSync.question(chalk.blue("What is your name? "))
+
+var welcomeUser = ("Hello " + userName + ", welcome to the History quiz.")
+
+console.log(chalk.yellow(welcomeUser))
+
+console.log('----------')
+
+var rules = ("1) There are 10 questions. \n 2) There is no negative points for wrong answer. \n 3) Answer as A or B ")
+
+console.log(rules)
+console.log('----------')
+
+function play(question,answer) {
+  var userAnswer = readlineSync.question(question)
+  if (userAnswer.toUpperCase() === answer.toUpperCase()){
+    console.log(chalk.green("Right"))
+    score = score + 1;
+  }else
+    console.log(chalk.red("Wrong"))
+}
+
+var questions = [
+  {
+    question : "When was Battle of Plassey fought? \n  A) 1857 B)  1757 ",
+    answer : "B"
+  },
+  {
+    question : "Who were the last Europeans to leave India? \n  A) Portuguese B)  French ",
+    answer : "A"
+  },
+  {
+    question : "Which was the headquarters of English East India Company? \n A) Bengal B) Bangalore  ",
+    answer : "A"
+  },
+  {
+    question : "Who was the first king of Mauyran Empire? \n A) Chandragupta B) Ashoka ",
+    answer : "A"
+  },
+  {
+    question : "Where was Gautam Buddha born? \n A) Gaya B) Lumbini ",
+    answer : "B"
+  },
+  {
+    question : "How many Battles of Panipat were fought? A) 5 B) 3 ",
+    answer : "B"
+  },
+  {
+    question : "Who were the people who invaded until Ganga river from south in medieval history? \n A) Pandyas B) Cholas ",
+    answer : "B"
+  },
+  {
+    question : "Who was the last Viceroy of India? \n A) Mountbatten B) Clive ",
+    answer : "A"
+  },
+  {
+    question : "Who was the leader of Muslim League? \n A) Jinnah B) Abul Kalam Azad ",
+    answer : "A"
+  },
+  {
+    question : "Who was the last powerful Mughal Emperor? A) Akbar B) Aurangzeb ",
+    answer : "B"
+  },
+]
+
+for (i = 0; i<questions.length; i++){
+  var currentQuestion = questions[i];
+  play(currentQuestion.question,currentQuestion.answer);
+  console.log("Your Score is " + score)
+  console.log('----------')
+}
+
+console.log("This is the list of High scores")
+
+for (j =0 ; j<highScore.length; j++){
+  console.log(highScore[j])
+}
